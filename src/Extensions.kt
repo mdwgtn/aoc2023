@@ -26,6 +26,12 @@ fun String.withLastNumeronymReplaced(): String =
 fun String.firstDigit(): Int = this[indexOfFirst { it.isDigit() }].digitToInt()
 fun String.lastDigit(): Int = this[indexOfLast { it.isDigit() }].digitToInt()
 
+fun String.whitespaceToComma() : String = replace(Regex("\\s+"), ",")
+fun String.leftOfPipe() : String = trim().split('|')[0].trim()
+fun String.rightOfPipe() : String = trim().split('|')[1].trim()
+
+fun String.leftOfColon(): String = trim().split(':')[0].trim()
+fun String.rightOfColon(): String = trim().split(':')[1].trim()
 
 /**
  * Converts string to md5 hash.

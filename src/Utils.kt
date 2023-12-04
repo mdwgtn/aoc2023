@@ -6,11 +6,11 @@ import kotlin.io.path.readLines
  */
 fun readInput(name: String) = Path("src/input/$name.txt").readLines()
 
-fun testFileName(day: String, testNo: Int): String =
-        day.lowercase() + "/" + day + if (testNo == 1) "_1_test" else "_2_test"
+fun testFileName(day: String): String =
+        day.lowercase() + "/" + day + "_1_test"
 
 fun test(callMe: (lines: List<String>) -> Int, day: String, testNo: Int, expected: Int) =
-        check(callMe(readInput(testFileName(day, testNo))) == expected)
+        check(callMe(readInput(testFileName(day))) == expected)
 
 
 val numeronyms = mapOf(

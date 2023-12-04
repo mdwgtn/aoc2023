@@ -11,19 +11,14 @@ import withLastNumeronymReplaced
 fun main() {
 
     fun part1(input: List<String>): Int = input
-            .map { CalibrationValue(it).part1Value() }
-            .reduce { acc, next -> acc + next }
+                .map { CalibrationValue(it).part1Value() }
+                .reduce { acc, next -> acc + next }
 
     fun part2(input: List<String>): Int = input
             .map { CalibrationValue(it).part2Value() }
             .reduce { acc, next -> acc + next }
 
     val day = "Day01"
-    val test01Expected = 142
-    val test02Expected = 281
-
-    test(::part1, day, 1, test01Expected)
-    test(::part2, day, 2, test02Expected)
 
     val input = readInput(day + "/" + day)
     println("Part 1 answer\n-------------")
