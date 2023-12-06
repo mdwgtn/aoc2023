@@ -33,6 +33,9 @@ fun String.rightOfPipe(): String = trim().split('|')[1].trim()
 fun String.leftOfColon(): String = trim().split(':')[0].trim()
 fun String.rightOfColon(): String = trim().split(':')[1].trim()
 
+fun String.tokeniseBySpaces(): List<String> = split("\\s+".toRegex())
+fun String.removeAllSpaces(): String = replace("\\s".toRegex(), "")
+
 fun List<String>.toParagraphs(): List<List<String>> =
         fold(mutableListOf(mutableListOf<String>())) { acc, line ->
             if (line.isBlank()) {
@@ -49,6 +52,8 @@ fun List<String>.toParagraphs(): List<List<String>> =
 fun String.md5() = BigInteger(1, MessageDigest.getInstance("MD5").digest(toByteArray()))
         .toString(16)
         .padStart(32, '0')
+
+fun Long.isEven() = this % 2L == 0L
 
 /**
  * The cleaner shorthand for printing output.

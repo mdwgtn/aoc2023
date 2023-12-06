@@ -1,5 +1,8 @@
 import kotlin.io.path.Path
 import kotlin.io.path.readLines
+import kotlin.math.ceil
+import kotlin.math.pow
+import kotlin.math.sqrt
 
 /**
  * Reads lines from the given input txt file.
@@ -25,3 +28,5 @@ val numeronyms = mapOf(
         "nine" to '9'
 )
 
+fun invertNTimesNPlusOne(takeMeBackToN: Long): Long =
+        ceil((-1 + sqrt(1 + 4 * takeMeBackToN.toDouble())) / 2L).toLong()
