@@ -36,6 +36,29 @@ fun String.rightOfColon(): String = trim().split(':')[1].trim()
 fun String.tokeniseBySpaces(): List<String> = split("\\s+".toRegex())
 fun String.removeAllSpaces(): String = replace("\\s".toRegex(), "")
 
+fun String.sorted(): String = toCharArray().sorted().joinToString("")
+
+fun String.maxRunLength(): Int {
+    val result = mutableListOf<String>()
+
+    if (isNotEmpty()) {
+        var currentGroup = this[0].toString()
+
+        for (i in 1 until length) {
+            if (this[i] == this[i - 1]) {
+                currentGroup += this[i]
+            } else {
+                result.add(currentGroup)
+                currentGroup = this[i].toString()
+            }
+        }
+
+        result.add(currentGroup)
+    }
+
+    return result.maxOfOrNull { it.length } ?: 0
+}
+
 fun List<String>.toParagraphs(): List<List<String>> =
         fold(mutableListOf(mutableListOf<String>())) { acc, line ->
             if (line.isBlank()) {
