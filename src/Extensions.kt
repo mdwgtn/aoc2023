@@ -82,3 +82,19 @@ fun Long.isEven() = this % 2L == 0L
  * The cleaner shorthand for printing output.
  */
 fun Any?.println() = println(this)
+
+fun List<Int>.lcmult(): Long = this.map{ it.toLong() }.lcm()
+fun List<Long>.lcm(): Long = reduce {it, element -> it.lcm(element)}
+
+fun Long.lcm(that: Long) = this * that / this.gcd(that)
+
+fun Long.gcd(that: Long): Long {
+    var x = this
+    var y = that
+    while (y != 0L) {
+        val temp = y
+        y = x % y
+        x = temp
+    }
+    return x
+}
