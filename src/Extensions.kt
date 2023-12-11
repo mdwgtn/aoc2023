@@ -69,6 +69,12 @@ fun List<String>.toParagraphs(): List<List<String>> =
             acc
         }.filter { it.isNotEmpty() }
 
+
+fun List<String>.padGridWith(glyph: String): List<String> {
+    val firstLine = glyph.repeat(this[0].length+2)
+    return (listOf(firstLine) + map { "$glyph$it$glyph" } + listOf(firstLine))
+}
+
 /**
  * Converts string to md5 hash.
  */
